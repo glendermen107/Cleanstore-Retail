@@ -18,14 +18,31 @@ export class ProductosService {
     }
 
     async findAll(): Promise<Producto[]> {
-        return await this.productoRepository.find();
+        return await this.productoRepository.find({
+            relations: ['categoria', 'imagenes'],
+            order: { createdAt: 'DESC' },
+        });
     }
 
     async findOne(id: string): Promise<Producto> {
-        const producto = await this.productoRepository.findOne({ where: { id } });
+        const producto = await this.productoRepository.findOne({
+            where: { id },
+            relations: ['categoria', 'imagenes'],
+        });
         if (!producto) {
             throw new NotFoundException(`Producto con ID ${id} no encontrado`);
         }
+
+        // Ordenar imágenes por orden y fecha de creación
+        if (producto.imagenes) {
+            producto.imagenes.sort((a, b) => {
+                if (a.orden !== b.orden) {
+                    return a.orden - b.orden;
+                }
+                return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+            });
+        }
+
         return producto;
     }
 

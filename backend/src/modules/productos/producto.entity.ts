@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Categoria } from '../categorias/categoria.entity';
+import { ProductoImagen } from '../imagenes/entities/producto-imagen.entity';
 
 @Entity('productos')
 export class Producto {
@@ -21,7 +22,7 @@ export class Producto {
     @Column({ type: 'varchar', length: 100 })
     tamano: string;
 
-    @Column({ type: 'varchar', length: 500 })
+    @Column({ type: 'varchar', length: 500, nullable: true })
     imagenUrl: string;
 
     @Column({ type: 'int' })
@@ -30,6 +31,9 @@ export class Producto {
     @ManyToOne(() => Categoria, (categoria) => categoria.productos)
     @JoinColumn({ name: 'categoriaId' })
     categoria: Categoria;
+
+    @OneToMany(() => ProductoImagen, (imagen) => imagen.producto, { cascade: true })
+    imagenes: ProductoImagen[];
 
     @Column({ type: 'boolean', default: false })
     ofertaActiva: boolean;
