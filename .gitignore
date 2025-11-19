@@ -88,9 +88,6 @@ test-upload.ps1
 # 🚫 INTERNAL KIRO FILES
 # ----------------------------
 .kiro/
-*.md
-!README.md
-!DEPLOYMENT.md
 
 # ----------------------------
 # 🚫 LOGS
