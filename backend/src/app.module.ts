@@ -6,6 +6,7 @@ import { CategoriasModule } from './modules/categorias/categorias.module';
 import { PedidosModule } from './modules/pedidos/pedidos.module';
 import { PagosModule } from './modules/pagos/pagos.module';
 import { ImagenesModule } from './modules/imagenes/imagenes.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ImagenesModule } from './modules/imagenes/imagenes.module';
     PedidosModule,
     PagosModule,
     ImagenesModule,
+    AdminModule,
   ],
 })
 export class AppModule { }

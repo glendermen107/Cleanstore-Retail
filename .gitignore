@@ -1,25 +1,112 @@
-# Node
+# ----------------------------
+# 🚫 NODE & JS/TS GENERAL
+# ----------------------------
 node_modules/
 npm-debug.log
-yarn-error.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Env
+# ----------------------------
+# 🚫 ENVIRONMENT
+# ----------------------------
 .env
-.env.*.local
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+admin/.env
 
-# Dist and Build
+# ----------------------------
+# 🚫 BUILD & DIST
+# ----------------------------
 dist/
+build/
+.cache/
 .next/
 out/
+coverage/
+*.tsbuildinfo
 
-# Docker
+# NestJS build
+backend/dist/
+
+# Next.js build
+frontend/.next/
+admin/.next/
+
+# ----------------------------
+# 🚫 DOCKER
+# ----------------------------
 docker-data/
 *.pid
+*.log
+docker-compose.override.yml
 
-# Editor folders
+# Docker local artifacts
+postgres_data/
+minio_data/
+**/postgres_data/
+**/minio_data/
+volumes/
+data/
+*.tar
+
+# ----------------------------
+# 🚫 EDITOR / OS FILES
+# ----------------------------
 .vscode/
 .idea/
+.DS_Store
+Thumbs.db
 
-# Logs
+# ----------------------------
+# 🚫 GENERATED FILES
+# ----------------------------
+*.seed
+*.local
+*.bak
+*.tmp
+*.swp
+*.orig
+*.lock
+package-lock.json
+pnpm-lock.yaml
+
+# ----------------------------
+# 🚫 SCRIPTS GENERATED
+# ----------------------------
+dev-up.sh
+prod-up.sh
+prod-build.sh
+oracle-init.sh
+test-upload.ps1
+*.ps1
+*.sh
+
+# ----------------------------
+# 🚫 INTERNAL KIRO FILES
+# ----------------------------
+.kiro/
+*.md
+!README.md
+!DEPLOYMENT.md
+
+# ----------------------------
+# 🚫 LOGS
+# ----------------------------
 logs/
 *.log
+backend/logs/
+frontend/logs/
+admin/logs/
+
+# ----------------------------
+# 🚫 CACHE
+# ----------------------------
+.npm/
+.yarn/
+.pnpm/
+.tmp/
+.temp/
+.cache/
